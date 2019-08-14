@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.Serialization;
 
-namespace ZbW.CarRentify.CarManagement.Infrastructure
+namespace ZbW.CarRentify.Common
 {
     [Serializable]
     internal class EntityNotFoundException : Exception

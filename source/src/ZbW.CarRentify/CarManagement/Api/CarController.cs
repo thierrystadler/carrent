@@ -29,9 +29,16 @@ namespace ZbW.CarRentify.CarManagement.Api
         }
 
         [HttpGet("{id}", Name = "Get")]
-        public CarDTO Get(Guid id)
+        public IActionResult Get(Guid id)
         {
-            return new CarDTO { Name = "Bugatti" };
+            try
+            {
+                return Ok(new CarDTO());
+            }
+            catch (EntryPointNotFoundException ex)
+            {
+                base.NotFound();
+            }
         }
 
         [HttpPost]
