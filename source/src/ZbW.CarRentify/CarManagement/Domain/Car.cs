@@ -8,8 +8,19 @@ namespace ZbW.CarRentify.CarManagement.Domain
 {
     public class Car : EntityBase
     {
-        private readonly Model _model;
+        private Model _model;
+
+        public Car()
+        {
+        }
+
+        public Car(Model model)
+        {
+            _model = model;
+        }
 
         public Model Model => _model;
+
+        public string Name { get; set; }
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using ZbW.CarRentify.CarManagement.Domain;
+using ZbW.CarRentify.Common;
 
 namespace ZbW.CarRentify.CarManagement.Infrastructure
 {
@@ -32,7 +33,7 @@ namespace ZbW.CarRentify.CarManagement.Infrastructure
 
         public IEnumerable<Car> GetAll()
         {
-            throw new NotImplementedException();
+            return _carContext.Query<Car>().ToList();
         }
 
         public void Insert(Car entity)

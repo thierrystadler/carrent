@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -36,6 +37,9 @@ namespace ZbW.CarRentify
             services.AddScoped<ICarService, CarService>();
             services.AddScoped<ICarRepository, CarRepository>();
             services.AddLogging(x => x.AddConsole());
+
+            var connection = @"Server=(localdb)\mssqllocaldb;Database=CarRent;Trusted_Connection=True;ConnectRetryCount=0";
+            services.AddDbContext<CarContext>(options => options.UseSqlServer(connection));
 
             //var serviceProvider = services.BuildServiceProvider();
             //serviceProvider.GetService<ICarRepository>();

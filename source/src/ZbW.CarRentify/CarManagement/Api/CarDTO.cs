@@ -10,5 +10,8 @@ namespace ZbW.CarRentify.CarManagement.Api
     {
         [JsonProperty("name")]
         public string Name { get; set; }
+        public Guid Id { get; internal set; }
+        public string Model { get; internal set; }
+        public string Brand { get; internal set; }
     }
 }

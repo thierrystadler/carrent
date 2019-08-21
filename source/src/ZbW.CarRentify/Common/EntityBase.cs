@@ -7,7 +7,7 @@ namespace ZbW.CarRentify.Common
 {
     public abstract class EntityBase : IEquatable<EntityBase>
     {
-        private readonly Guid _id;
+        private Guid _id;
 
         protected EntityBase()
         {

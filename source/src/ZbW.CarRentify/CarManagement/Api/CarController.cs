@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Common;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
@@ -22,23 +23,29 @@ namespace ZbW.CarRentify.CarManagement.Api
         [HttpGet]
         public IEnumerable<CarDTO> Get()
         {
-            return new[] {
-                new CarDTO { Name = "Mercedes Benz"},
-                new CarDTO { Name = "Bugatti" }
-            };
+            return _carService.GetAll().Select(x =>
+                new CarDTO
+                {
+                    Id = x.Id,
+                    Name = x.Name,
+                    Model = x.Model.ToString(),
+                    Brand = x.Model.Brand.ToString()
+                }
+            );
         }
 
         [HttpGet("{id}", Name = "Get")]
-        public IActionResult Get(Guid id)
+        public CarDTO Get(Guid id)
         {
-            try
+            var car = _carService.Get(id);
+
+            return new CarDTO
             {
-                return Ok(new CarDTO());
-            }
-            catch (EntryPointNotFoundException ex)
-            {
-                base.NotFound();
-            }
+                Id = car.Id,
+                Name = car.Name,
+                Model = car.Model.ToString(),
+                Brand = car.Model.Brand.ToString()
+            };
         }
 
         [HttpPost]
