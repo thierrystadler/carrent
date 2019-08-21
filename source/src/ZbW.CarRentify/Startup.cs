@@ -38,7 +38,7 @@ namespace ZbW.CarRentify
             services.AddScoped<ICarRepository, CarRepository>();
             services.AddLogging(x => x.AddConsole());
 
-            var connection = @"Server=(localdb)\mssqllocaldb;Database=CarRent;Trusted_Connection=True;ConnectRetryCount=0";
+            var connection = @"Server=(localdb)\mssqllocaldb;Database=carrent;Trusted_Connection=True;";
             services.AddDbContext<CarContext>(options => options.UseSqlServer(connection));
 
             //var serviceProvider = services.BuildServiceProvider();

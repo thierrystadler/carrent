@@ -11,9 +11,9 @@ namespace ZbW.CarRentify.CarManagement.Infrastructure
     {
         private readonly CarContext _carContext;
 
-        public CarRepository()
+        public CarRepository(CarContext carContext)
         {
-            _carContext = new CarContext();
+            _carContext = carContext;
         }
         public void Delete(Car entity)
         {
@@ -23,7 +23,7 @@ namespace ZbW.CarRentify.CarManagement.Infrastructure
         public Car Get(Guid id)
         {
             var car = _carContext.Cars.Find(id);
-            if(car == null)
+            if (car == null)
             {
                 throw new EntityNotFoundException();
             }

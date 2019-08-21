@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace ZbW.CarRentify.Migrations
 {
-    public partial class InitialCreate : Migration
+    public partial class initialcreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -34,7 +34,6 @@ namespace ZbW.CarRentify.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(nullable: false),
-                    BrandId1 = table.Column<Guid>(nullable: true),
                     CarClassId = table.Column<Guid>(nullable: true),
                     BrandId = table.Column<Guid>(nullable: true)
                 },
@@ -44,12 +43,6 @@ namespace ZbW.CarRentify.Migrations
                     table.ForeignKey(
                         name: "FK_Model_Brand_BrandId",
                         column: x => x.BrandId,
-                        principalTable: "Brand",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Model_Brand_BrandId1",
-                        column: x => x.BrandId1,
                         principalTable: "Brand",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
@@ -89,11 +82,6 @@ namespace ZbW.CarRentify.Migrations
                 name: "IX_Model_BrandId",
                 table: "Model",
                 column: "BrandId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Model_BrandId1",
-                table: "Model",
-                column: "BrandId1");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Model_CarClassId",

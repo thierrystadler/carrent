@@ -10,12 +10,10 @@ namespace ZbW.CarRentify.CarManagement.Infrastructure
     public class CarContext : DbContext
     {
         public DbSet<Car> Cars { get; set; }
+        public CarContext(DbContextOptions<CarContext> options)
+            : base(options)
+        { }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder.UseSqlServer("Server=(localdb)\v11.0;Integrated Security=true;");
-            base.OnConfiguring(optionsBuilder);
-        }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -38,6 +36,7 @@ namespace ZbW.CarRentify.CarManagement.Infrastructure
             modelEntity.HasOne(x => x.CarClass);
             modelEntity.UsePropertyAccessMode(PropertyAccessMode.FieldDuringConstruction);
             base.OnModelCreating(modelBuilder);
+
         }
     }
 }
